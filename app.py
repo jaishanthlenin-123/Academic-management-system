@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 import mysql.connector
+#jaishanth
 
 app = Flask(__name__)
 app.secret_key = "cse"
-
+print("jaishanth")
 # -------------------- DATABASE CONNECTION --------------------
 def get_db_connection():
     return mysql.connector.connect(
