@@ -4,7 +4,7 @@ import mysql.connector
 
 app = Flask(__name__)
 app.secret_key = "cse"
-print("jaishanth")
+
 # -------------------- DATABASE CONNECTION --------------------
 def get_db_connection():
     return mysql.connector.connect(
