@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Examinations</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a73e8, #4a90e2);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .header h1 { margin: 0; font-size: 32px; }
+
+        .back-link {
+            display: inline-block;
+            margin: 20px 0;
+            text-decoration: none;
+            color: #ffd700;
+            font-weight: bold;
+        }
+        .back-link:hover { color: #fff; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+            display: grid;
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.15);
+            padding: 25px 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+            color: white;
+        }
+
+        .card h2 { margin-bottom: 20px; font-size: 24px; }
+
+        input, select {
+            width: 90%;
+            max-width: 400px;
+            padding: 10px 12px;
+            margin: 8px auto 20px auto;
+            display: block;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background: rgba(255,255,255,0.25);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        select option {
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+        }
+
+        button {
+            background: #ffd700;
+            color: #333;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 90%;
+            max-width: 400px;
+            display: block;
+            margin: 0 auto;
+        }
+        button:hover { background: #fff; color: #1a73e8; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.25);
+            color: white;
+        }
+
+        th, td { padding: 12px 15px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.2); }
+        th { background: rgba(255,255,255,0.25); font-weight: 600; }
+        tr:hover { background: rgba(255,255,255,0.2); }
+    </style>
+</head>
+<body>
+    <div class="header"><h1>Examinations</h1></div>
+    <div class="container">
+        <a class="back-link" href="/">← Back to Dashboard</a>
+
+        <div class="card">
+            <h2>Add Examination</h2>
+            <form method="POST">
+                <select name="course" required>
+                    <option value="">Select Course</option>
+                    {% for c in courses %}
+                    <option value="{{ c.CourseID }}">{{ c.CourseName }}</option>
+                    {% endfor %}
+                </select>
+                <input type="date" name="date" required>
+                <select name="examtype" required>
+                    <option value="">Select Exam Type</option>
+                    <option value="Midterm">Midterm</option>
+                    <option value="Final">Final</option>
+                    <option value="Quiz">Quiz</option>
+                    <option value="Assignment">Assignment</option>
+                </select>
+                <button type="submit">Add Examination</button>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>Existing Examinations</h2>
+            <table>
+                <tr><th>ID</th><th>Course</th><th>Exam Date</th><th>Exam Type</th></tr>
+                {% for e in exams %}
+                <tr>
+                    <td>{{ e.ExamID }}</td>
+                    <td>{{ e.CourseName }}</td>
+                    <td>{{ e.ExamDate }}</td>
+                    <td>{{ e.ExamType }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a73e8, #4a90e2);
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 30px;
+            letter-spacing: 1px;
+        }
+
+        .logout-btn {
+            position: absolute;
+            top: 50%;
+            right: 25px;
+            transform: translateY(-50%);
+            background-color: white;
+            color: #1a73e8;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Container Grid */
+        .container {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            padding: 50px 80px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        /* Card Design */
+        .card {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 35px 25px;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+            color: white;
+            width: 230px;
+            height: 180px;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(12px);
+            animation: slideDown 0.7s ease both;
+        }
+
+        /* Card Hover */
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Icon Style */
+        .card i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .card a:hover {
+            background: #ffd700;
+            color: #333;
+        }
+
+        /* Animation */
+        @keyframes slideDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>College Management System</h1>
+        <form action="{{ url_for('logout') }}" method="get" style="display:inline;">
+            <button class="logout-btn" type="submit">Logout</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <i class="fas fa-building"></i>
+            <h3>Departments</h3>
+            <a href="/department">Manage</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-user-graduate"></i>
+            <h3>Students</h3>
+            <a href="/student">Register / View</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-chalkboard-teacher"></i>
+            <h3>Faculty</h3>
+            <a href="/faculty">Manage</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-book"></i>
+            <h3>Courses</h3>
+            <a href="/course">Manage</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-user-plus"></i>
+            <h3>Enrollments</h3>
+            <a href="/enrollment">Manage</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-clipboard-check"></i>
+            <h3>Attendance</h3>
+            <a href="/attendance">Manage</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-file-alt"></i>
+            <h3>Examinations</h3>
+            <a href="/examination">Manage</a>
+        </div>
+        <div class="card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Results</h3>
+            <a href="/results">Manage</a>
+        </div>
+    </div>
+</body>
+</html>
