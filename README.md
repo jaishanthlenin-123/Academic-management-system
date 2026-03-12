@@ -96,7 +96,7 @@ You can modify these values according to your MySQL setup.
 ### 1 Clone the Repository
 
 ```
-git clone https://github.com/yourusername/academic-management-system.git
+git clone https://github.com/jaishanthlenin-123/academic-management-system.git
 ```
 
 ### 2 Navigate to the project
